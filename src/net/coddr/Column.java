@@ -17,20 +17,25 @@ public class Column {
 	
 	/** TODO **/
 	public Column setPrimaryKey() {
+		if(!sql.contains("PRIMARY KEY")) {
+			
+		}
 		return this;
 	}
 	
-	/** TODO **/
+	/***
+	 * setAutoincrement
+	 * 
+	 * @return
+	 */
 	public Column setAutoincrement() {
 		if(fieldType == CType.INTEGER) {
+			if(!sql.contains("PRIMARY KEY AUTOINCREMENT")) {
+				sql += " PRIMARY KEY AUTOINCREMENT ";
+			}
 			return this;
 		}
-		try {
-			throw new Exception("AUTOINCREMENT is only allowed on an INTEGER");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+		return this;
 	}
 	
 	/***
